@@ -1,5 +1,7 @@
 # pytest-lens
 
+[![ci](https://github.com/jszbuzhidao/pytest-lens/actions/workflows/ci.yml/badge.svg)](https://github.com/jszbuzhidao/pytest-lens/actions/workflows/ci.yml)
+
 把散落在每个 CI 构建里的 pytest 结果，汇聚成可追溯的趋势与失败聚类。
 
 `pytest-lens` 解决三个测试工程里的实际痛点：
