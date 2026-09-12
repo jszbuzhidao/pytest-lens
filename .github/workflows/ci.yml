@@ -39,7 +39,19 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.13"
+          cache: pip
+
+      # 注意：import 自检会加载 lens.api（依赖 fastapi/uvicorn），
+      # 所以这里必须先安装依赖，否则 lint 会因为 ModuleNotFoundError 失败。
+      - name: 安装
+        run: python -m pip install -e ".[dev]"
+
       - name: 语法与导入自检
         run: |
-          python -m compileall -q lens
+          python -m compileall -q lens tests
           python -c "import lens, lens.api, lens.cli, lens.plugin, lens.report; print('imports ok')"
+
+      - name: 插件入口自检
+        run: |
+          pytest --help | grep -q -- "--lens" && echo "pytest11 entrypoint ok"
+          lens stats --help >/dev/null && echo "cli ok"
