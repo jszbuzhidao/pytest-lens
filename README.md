@@ -26,7 +26,7 @@ lens seed-demo
 lens stats
 
 # 3. 生成 Markdown 报告
-lens report -o report.md
+lens report --out report.md
 
 # 4. 打开网页看板
 lens serve            # http://127.0.0.1:8000
@@ -94,7 +94,7 @@ coverage run -m pytest && coverage report -m   # 208 个用例，99%（802 条�
 
 > 为什么不用 `pytest --cov=lens`？本项目通过 `pytest11` 入口注册插件，pytest 会在
 > pytest-cov 开始计量**之前**就 `import lens`，于是整个包的模块级代码都被算成「未执行」，
-> 覆盖率会虚低到 76%。要准确数字就用 `coverage run -m pytest`。
+> 覆盖率会虚低到 83%（同一份代码、同一批用例）。要准确数字就用 `coverage run -m pytest`。
 >
 > Windows 上跑本项目时**不要**加 `--basetemp`，会让 fixture 目录解析异常。
 
