@@ -89,7 +89,7 @@ AssertionError: expected 5, got 9   /tmp/pytest-9/test_x1.py:31
 
 ```bash
 pytest -q
-coverage run -m pytest && coverage report -m   # 204 个用例，99%
+coverage run -m pytest && coverage report -m   # 208 个用例，99%（802 条语句）
 ```
 
 > 为什么不用 `pytest --cov=lens`？本项目通过 `pytest11` 入口注册插件，pytest 会在
